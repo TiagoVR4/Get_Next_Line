@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/04 17:24:13 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:34:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*fill_line(char *buffer, int fd)
 	ssize_t	bytes_read;
 	char	*temp;
 
+	bytes_read = 1;
 	while (ft_check(buffer) == 0 && bytes_read !=0)
 	{
 		temp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -29,7 +30,7 @@ char	*fill_line(char *buffer, int fd)
 			free (buffer);
 			return (NULL);
 		}
-		buffer = temp[BUFFER_SIZE];
+		buffer = ft_strjoin (temp[BUFFER_SIZE]);
 	}
 	return (buffer);
 }
