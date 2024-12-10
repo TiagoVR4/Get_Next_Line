@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:40:31 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/05 18:33:58 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/10 17:00:30 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //Conta o tamanho da str.
 size_t ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -34,7 +34,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 	s1_len = 0;
 	s2_len = 0;
-	s3 = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
+	s3 = ft_calloc(sizeof(char), ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (!s3)
 		return (NULL);
 	while (s1[s1_len] != '\0')
@@ -49,4 +49,22 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	s3[s1_len + s2_len] = '\0';
 	return (s3);
+}
+
+//aloca a memória para um array e inicializa todos os bytes por '\0'
+void	*ft_calloc(size_t count, size_t size)
+{
+	unsigned char	*temp;
+	size_t		i;
+
+	temp = (unsigned char *)malloc(count * size);
+	i = 0;
+	if (!temp)
+		return (NULL);
+	while (i < (count * size))
+	{
+		temp[i] = '\0';
+		i++;
+	}
+	return ((void *)temp);
 }
