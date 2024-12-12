@@ -6,13 +6,13 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/11 18:22:39 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:37:20 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	find_line(char *buffer)
+static int	find_line(char *buffer)
 {
 	int	i;
 
@@ -28,7 +28,36 @@ int	find_line(char *buffer)
 	return (0);
 }
 
-char	*fill_line(char *buffer, int fd)
+static char	*extract_line(char	*buffer)
+{
+	size_t	i;
+	size_t	r_buffer_len;
+	char *	r_buffer;
+	
+	i = 0;
+	r_buffer_len = 0;
+	if (!buffer)
+		return (NULL);
+	while (buffer[r_buffer_len] != '\n' && buffer[r_buffer_len] != '\0')
+		r_buffer_len++;
+	r_buffer = (char *)ft_calloc(r_buffer_len + 2, sizeof(char));
+	if (!r_buffer)
+		return (NULL);
+	while (buffer[i] != '\n' && buffer[i] != '\0')
+	{
+		r_buffer[i] = buffer[i];
+		i++;
+	}
+	if (buffer[i] == '\n')
+	{
+		r_buffer[i] = '\n';
+		i++;
+	}
+	r_buffer[i] = '\0';
+	return (r_buffer);
+}
+
+static char	*fill_line(char *buffer, int fd)
 {
 	ssize_t	bytes_read;
 	char	*temp;
@@ -45,10 +74,12 @@ char	*fill_line(char *buffer, int fd)
 			return (free(buffer), free(temp), NULL);
 		new_buffer = ft_strjoin(buffer, temp);
 		if (!new_buffer)
-			return (free(new_buffer), free(temp), NULL);
+			return (free(temp), NULL);
 		free (buffer);
 		buffer = new_buffer;
 	}
+	if (find_line(buffer) == 1)
+		extract_line(buffer);
 	return (free(temp), buffer);
 }
 
