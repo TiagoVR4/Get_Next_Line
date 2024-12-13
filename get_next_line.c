@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/12 13:37:20 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:33:28 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ static int	find_line(char *buffer)
 static char	*extract_line(char	*buffer)
 {
 	size_t	i;
-	size_t	r_buffer_len;
+	size_t	line_len;
 	char *	r_buffer;
 	
 	i = 0;
-	r_buffer_len = 0;
+	line_len = 0;
 	if (!buffer)
 		return (NULL);
-	while (buffer[r_buffer_len] != '\n' && buffer[r_buffer_len] != '\0')
-		r_buffer_len++;
-	r_buffer = (char *)ft_calloc(r_buffer_len + 2, sizeof(char));
+	while (buffer[line_len] != '\n' && buffer[line_len] != '\0')
+		line_len++;
+	r_buffer = (char *)ft_calloc(line_len + 2, sizeof(char));
 	if (!r_buffer)
 		return (NULL);
 	while (buffer[i] != '\n' && buffer[i] != '\0')
@@ -55,6 +55,11 @@ static char	*extract_line(char	*buffer)
 	}
 	r_buffer[i] = '\0';
 	return (r_buffer);
+}
+
+static char	*update_buffer()
+{
+	
 }
 
 static char	*fill_line(char *buffer, int fd)
