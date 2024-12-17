@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/17 15:32:19 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:55:56 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,12 +135,12 @@ int	main()
 	int	fd = open("arquivo.txt", O_RDONLY);
 	char	*line;
 	
-	line = get_next_line(fd);
-	while (line)
+	
+	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf ("%s", line);
+		free(line);
 	}
-	free(line);
 	close (fd);
 	return (0);
 }
