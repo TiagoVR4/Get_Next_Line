@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/17 15:55:56 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:01:05 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*fill_line(char *buffer, int fd)
 		if (!temp)
 			return (NULL);
 		bytes_read = read(fd, temp, BUFFER_SIZE);
-		if (bytes_read == -1)
+		if (bytes_read <= 0)
 			return (free(buffer), free(temp), NULL);
 		new_buffer = ft_strjoin(buffer, temp);
 		free(temp);

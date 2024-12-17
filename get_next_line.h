@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:32:40 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/17 14:14:57 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:02:37 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 1
 #endif
 
 char	*ft_strjoin(const char *s1, const char *s2);
