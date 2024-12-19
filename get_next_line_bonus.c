@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/19 12:14:22 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:18:09 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,32 +131,24 @@ char	*get_next_line(int fd)
 	stash[fd] = update_stash(stash[fd]);
 	return (line);
 }
-
+/* 
 int	main()
 {
 	char	*line;
 	const char	*filename[] = {"file.txt", "file0.txt", "file1.txt", "file2.txt"};
-	static char	*stash[FD_SIZE];
 	int	fd;
 	int	i = 0;
 
 	while (i < 4)
 	{
 		fd = open(filename[i], O_RDONLY);
-		
 		while ((line = get_next_line(fd)) != NULL)
 		{
 			printf ("%s", line);
 			free(line);
 		}
-		line = NULL;
+		close (fd);
 		i++;
-		if (stash[fd] != NULL)
-		{
-			free (stash[fd]);
-			stash[fd] = NULL;
-		}
 	}
-	close (fd);
 	return (0);
-}
+} */
