@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/19 14:18:09 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:51:31 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	*fill_stash(char *stash, int fd)
 		free(buffer);
 		if (!new_stash)
 			return (free(stash), NULL);
-		free (stash);
+		free(stash);
 		stash = new_stash;
 	}
 	return (stash);
