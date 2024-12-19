@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/19 11:29:55 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:14:22 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	find_line(char *stash)
 {
@@ -117,32 +117,46 @@ static char	*update_stash(char *stash)
 
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	static char	*stash[FD_SIZE];
 	char		*line;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= FD_SIZE)
 		return (NULL);
-	stash = fill_stash(stash, fd);
-	if (!stash)
+	stash[fd] = fill_stash(stash[fd], fd);
+	if (!stash[fd])
 		return (NULL);
-	line = extract_line(stash);
+	line = extract_line(stash[fd]);
 	if (!line)
-		return (free(stash), NULL);
-	stash = update_stash(stash);
+		return (free(stash[fd]), NULL);
+	stash[fd] = update_stash(stash[fd]);
 	return (line);
 }
-/* 
+
 int	main()
 {
-	int	fd = open("file.txt", O_RDONLY);
 	char	*line;
-	
-	
-	while ((line = get_next_line(fd)) != NULL)
+	const char	*filename[] = {"file.txt", "file0.txt", "file1.txt", "file2.txt"};
+	static char	*stash[FD_SIZE];
+	int	fd;
+	int	i = 0;
+
+	while (i < 4)
 	{
-		printf ("%s", line);
-		free(line);
+		fd = open(filename[i], O_RDONLY);
+		
+		while ((line = get_next_line(fd)) != NULL)
+		{
+			printf ("%s", line);
+			free(line);
+		}
+		line = NULL;
+		i++;
+		if (stash[fd] != NULL)
+		{
+			free (stash[fd]);
+			stash[fd] = NULL;
+		}
 	}
 	close (fd);
 	return (0);
-} */
+}
