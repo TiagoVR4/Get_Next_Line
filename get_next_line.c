@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/19 11:29:55 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:18:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static char	*fill_stash(char *stash, int fd)
 	char	*new_stash;
 
 	bytes_read = 1;
-	if (!stash)
-		stash = (char *)ft_calloc(1, sizeof(char));
 	while (find_line(stash) == 0 && bytes_read != 0)
 	{
 		buffer = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
@@ -100,7 +98,7 @@ static char	*update_stash(char *stash)
 		i++;
 	if (stash[i] == '\0')
 		return (free(stash), NULL);
-	new_stash = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
+	new_stash = ft_calloc(ft_strlen(stash) - i, sizeof(char));
 	if (!new_stash)
 		return (free(stash), NULL);
 	i++;
@@ -122,6 +120,12 @@ char	*get_next_line(int fd)
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
+	if (!stash)
+	{
+		stash = (char *)ft_calloc(1, sizeof(char));
+		if (!stash)
+			return	(NULL);
+	}
 	stash = fill_stash(stash, fd);
 	if (!stash)
 		return (NULL);

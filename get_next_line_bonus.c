@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/19 15:51:31 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:15:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static char	*update_stash(char *stash)
 		i++;
 	if (stash[i] == '\0')
 		return (free(stash), NULL);
-	new_stash = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
+	new_stash = ft_calloc(ft_strlen(stash) - i, sizeof(char));
 	if (!new_stash)
 		return (free(stash), NULL);
 	i++;
