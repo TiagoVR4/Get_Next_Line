@@ -6,14 +6,14 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 13:40:31 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/10 17:00:30 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:20:37 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 //Conta o tamanho da str.
-size_t ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -55,7 +55,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*temp;
-	size_t		i;
+	size_t			i;
 
 	temp = (unsigned char *)malloc(count * size);
 	i = 0;

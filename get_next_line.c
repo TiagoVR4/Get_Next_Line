@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/18 10:04:47 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:21:30 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	find_line(char *stash)
 	return (0);
 }
 
-static char	*fill_line(char *stash, int fd)
+static char	*fill_stash(char *stash, int fd)
 {
 	ssize_t	bytes_read;
 	char	*buffer;
@@ -84,7 +84,7 @@ static char	*extract_line(char	*stash)
 	return (line);
 }
 
-static char	*update_buffer(char *stash)
+static char	*update_stash(char *stash)
 {
 	char	*new_stash;
 	int		i;
@@ -92,15 +92,15 @@ static char	*update_buffer(char *stash)
 
 	i = 0;
 	new_i = 0;
-	if (!stash) //impede erros caso o buffer esteja NULL
+	if (!stash)
 		return (NULL);
 	while (stash[i] != '\n' && stash[i] != '\0')
 		i++;
 	if (stash[i] == '\0')
 		return (free(stash), NULL);
-	new_stash = (char *)ft_calloc(ft_strlen(stash) - i + 1, sizeof(char)); // + 1 porque nao estavamos a pensar no '\0'
+	new_stash = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
 	if (!new_stash)
-		return (free(stash), NULL); //esquecemo-nos de livertar ao buffer;
+		return (free(stash), NULL);
 	i++;
 	while (stash[i] != '\0')
 	{
@@ -120,13 +120,13 @@ char	*get_next_line(int fd)
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	stash = fill_line(stash, fd);
+	stash = fill_stash(stash, fd);
 	if (!stash)
 		return (NULL);
 	line = extract_line(stash);
 	if (!line)
 		return (free(stash), NULL);
-	stash = update_buffer(stash);
+	stash = update_stash(stash);
 	return (line);
 }
 /* 
