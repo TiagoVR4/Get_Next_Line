@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:32:40 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/19 15:33:31 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:39:58 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # endif
 
 # ifndef FD_SIZE
-#  define FD_SIZE 42
+#  define FD_SIZE 65534
 # endif
 
 char	*ft_strjoin(const char *s1, const char *s2);
