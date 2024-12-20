@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/20 18:57:05 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:15:20 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ static char	*fill_stash(char *stash, int fd)
 	while (bytes_read > 0 && find_line(stash) == 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
+		if (bytes_read < 0)
 			return (free(stash), free(buffer), NULL);
+		buffer[bytes_read] = '\0';
 		new_stash = ft_strjoin(stash, buffer);
 		if (!new_stash)
 			return (free(stash), NULL);
