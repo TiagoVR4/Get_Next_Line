@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/20 16:54:40 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:57:05 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ char	*get_next_line(int fd)
 	}
 	return (0);
 } */
+/* 
 int	main(int argc, char **argv)
 {
 	int		fd;
@@ -183,4 +184,4 @@ int	main(int argc, char **argv)
 		}
 	}
 	return (0);
-}
+} */
