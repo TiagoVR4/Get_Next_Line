@@ -6,7 +6,7 @@
 /*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/20 19:15:20 by tiagalex         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:08:45 by tiagalex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,12 @@ char	*get_next_line(int fd)
 		return (free(stash[fd]), NULL);
 	return (line);
 }
-
-/* int	main()
+/* 
+int	main()
 {
 	char	*line;
-	const char	*filename[] = {"file.txt", "file0.txt", "file1.txt", "file2.txt"};
+	const char	*filename[] = 
+	{"file.txt", "file0.txt", "file1.txt", "file2.txt"};
 	int	fd;
 	int	i = 0;
 

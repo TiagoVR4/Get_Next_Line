@@ -5,7 +5,7 @@ get_next_line é uma função que lê e retorna uma linha de um arquivo a cada c
 
 ## Sumário
 
-- [Introdução](#Introdução)
+- [Protótipo](#Protótipo)
 
 
 
@@ -29,7 +29,9 @@ char	*get_next_line(int fd);
 4. Não deve haver leaks de memória.
 
 
-## Funcionalidades 
+## Arquivos do Projeto
 
-1. Lê 1 linha de cada vez, guardando dados entre chamadas da mesma função.
-2. 
+1. get_next_line.h
+ - Declaração do protótipo da função get_next_line.
+ - Prototipa as funções auxiliares.
+ - Define macros, como BUFFER_SIZE.
