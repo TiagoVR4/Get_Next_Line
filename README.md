@@ -11,9 +11,9 @@ get_next_line é uma função que lê e retorna uma linha de um arquivo a cada c
 
 ## Protótipo
 
-'''
+```
 char	*get_next_line(int fd);
-'''
+```
 
 
 ## Retorno
