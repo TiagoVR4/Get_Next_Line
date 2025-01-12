@@ -22,7 +22,7 @@ char	*get_next_line(int fd);
 - 'NULL' em caso de erro ou quando chegou ao fim do arquivo.
 
 
-## Regras do Projecto(passar este titulo para cima do protótipo)
+## Regras do Projecto
 
 1. O comportamento deve ser consistente independente do valor do 'BUFFER_SIZE'.
 2. É proibido o uso de funções da biblioteca standard, excerto 'read', 'malloc', 'free'.
