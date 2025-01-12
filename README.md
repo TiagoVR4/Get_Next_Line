@@ -1,6 +1,6 @@
 # Get_Next_Line
 
-get_next_line é uma função que lê e retorna uma linha de um arquivo a cada chamada, guardando os dados num espaço de dinâmico chamado 'stash'.
+get_next_line é uma função que lê e retorna uma linha de um arquivo a cada chamada, guardando os dados num espaço dinâmico chamado 'stash'.
 
 
 ## Sumário
