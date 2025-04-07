@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiagalex <tiagalex@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tiagvr <tiagvr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:30:20 by tiagalex          #+#    #+#             */
-/*   Updated: 2024/12/20 19:15:58 by tiagalex         ###   ########.fr       */
+/*   Updated: 2025/04/07 03:35:08 by tiagvr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*fill_stash(char *stash, int fd)
 	char	*buffer;
 	char	*new_stash;
 
-	buffer = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
+	buffer = gnl_calloc(sizeof(char), (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
@@ -44,7 +44,7 @@ static char	*fill_stash(char *stash, int fd)
 		if (bytes_read < 0)
 			return (free(stash), free(buffer), NULL);
 		buffer[bytes_read] = '\0';
-		new_stash = ft_strjoin(stash, buffer);
+		new_stash = gnl_strjoin(stash, buffer);
 		if (!new_stash)
 			return (free(stash), NULL);
 		free(stash);
@@ -68,7 +68,7 @@ static char	*extract_line(char	*stash)
 		return (NULL);
 	while (stash[line_len] != '\n' && stash[line_len] != '\0')
 		line_len++;
-	line = (char *)ft_calloc(line_len + 2, sizeof(char));
+	line = (char *)gnl_calloc(line_len + 2, sizeof(char));
 	if (!line)
 		return (NULL);
 	while (stash[i] != '\n' && stash[i] != '\0')
@@ -96,7 +96,7 @@ static char	*update_stash(char *stash)
 		i++;
 	if (stash[i] == '\0')
 		return (free(stash), NULL);
-	new_stash = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
+	new_stash = gnl_calloc(gnl_strlen(stash) - i + 1, sizeof(char));
 	if (!new_stash)
 		return (free(stash), NULL);
 	i++;
@@ -118,7 +118,7 @@ char	*get_next_line(int fd)
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
 	if (!stash)
-		stash = (char *)ft_calloc(1, sizeof(char));
+		stash = (char *)gnl_calloc(1, sizeof(char));
 	stash = fill_stash(stash, fd);
 	if (!stash)
 		return (NULL);
